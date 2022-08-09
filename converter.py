@@ -5,6 +5,8 @@ A module for converting between zmatrices and cartesian coordinates
 import numpy as np
 
 VERBOSE = True
+ZINPUT = 'zmatrix/'
+OUTPUT = 'output/'
 
 
 class Converter:
@@ -27,7 +29,7 @@ class Converter:
         The first three atoms have blank lists for the undefined coordinates
         """
         self.zmatrix = []
-        with open(input_file, 'r') as f:
+        with open(ZINPUT+input_file, 'r') as f:
             next(f)
             next(f)
 
@@ -273,7 +275,7 @@ class Converter:
 
     def output_cartesian(self, output_file='cartesian.dat'):
         """Output the cartesian coordinates of the file"""
-        with open(output_file, 'w') as f:
+        with open(OUTPUT+output_file, 'w') as f:
             f.write(f'{len(self.cartesian)}\n\n')
             f.write(self.str_cartesian())
 
@@ -287,7 +289,7 @@ class Converter:
 
     def output_zmatrix(self, output_file='zmatrix.dat'):
         """Output the zmatrix to the file"""
-        with open(output_file, 'w') as f:
+        with open(OUTPUT+output_file, 'w') as f:
             f.write('#ZMATRIX\n#\n')
             f.write(self.str_zmatrix())
 
